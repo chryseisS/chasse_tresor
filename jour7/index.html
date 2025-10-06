@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jour 7</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 5vh 2vw;
+    }
+    input, button {
+      padding: 1em;
+      font-size: 1em;
+      margin: 5px;
+    }
+    img {
+      margin-top: 3vh;
+      max-width: 90%;
+      height: auto;
+      border-radius: 12px;
+    }
+    @media (max-width: 500px) {
+      input, button {
+        width: 80%;
+        margin-top: 10px;
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Jour 7</h1>
+  
+  <!-- Conteneur du texte + formulaire -->
+  <div id="form-container">
+    <p>Entre le mot de passe de l'énigme :</p>
+    <input type="text" id="password" placeholder="Tape le mot de passe ici">
+    <button onclick="checkPassword()">Valider</button>
+  </div>
+
+  <div id="result"></div>
+
+  <script>
+    function checkPassword() {
+      const expected = "reponse7";
+      const input = document.getElementById('password').value.trim();
+      const result = document.getElementById('result');
+      if (input === expected) {
+        // supprime tout le conteneur (texte + champ + bouton)
+        document.getElementById('form-container').remove();
+        // affiche l'image
+        result.innerHTML = '<img src="image.jpg" alt="Récompense">';
+      } else {
+        result.innerHTML = '<p style="color:red;">Mauvaise réponse 😅</p>';
+      }
+    }
+  </script>
+</body>
+</html>
