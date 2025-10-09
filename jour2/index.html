@@ -107,16 +107,15 @@
 <body>
   <h1>Jour 2</h1>
   <p>Entre la réponse de l'énigme :</p>
-  <input type="text" id="password" placeholder="Ta réponse ici">
+  <input type="text" id="password" placeholder="Réponse">
   <br>
   <button onclick="checkPassword()">Valider</button>
   <div id="result"></div>
 
   <div id="indiceZone">
-    <div id="indice1" class="indiceText">Indice 1 : (à personnaliser)</div>
-    <div id="indice2" class="indiceText">Indice 2 : (à personnaliser)</div>
-    <div id="indice3" class="indiceText">Indice 3 : (à personnaliser)</div>
-
+    <div id="indice1" class="indiceText">Indice 1 : moi je les trouve mignons</div>
+	<div id="indice2" class="indiceText">Indice 2 : il y en a quand même beaucoup dans les grandes villes</div>
+	<div id="indice3" class="indiceText">Indice 3 : les enfants les embêtent souvent</div>
     <div id="indiceLink" class="indiceLink" onclick="showNextIndice()">💭 Voir un indice</div>
     <div id="compteurIndice"></div>
   </div>
@@ -129,7 +128,7 @@
 
     function checkPassword() {
       const input = document.getElementById('password').value.trim().toLowerCase();
-      const expected = "reponse2";
+      const expected = "itekso";
       const result = document.getElementById('result');
 
       result.classList.remove('shake');
