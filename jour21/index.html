@@ -4,56 +4,159 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jour 21</title>
+
+  <!-- Import de la police moderne douce -->
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Comfortaa', cursive;
       text-align: center;
-      padding: 5vh 2vw;
+      padding: 50px;
+      background-color: #f5f7fa;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      animation: fadeIn 1s ease;
     }
-    input, button {
-      padding: 1em;
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      color: #333;
+      font-weight: 600;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+    p {
+      color: #555;
+      margin-bottom: 10px;
+    }
+    input {
+      padding: 10px 15px;
       font-size: 1em;
-      margin: 5px;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      outline: none;
+      transition: all 0.3s ease;
     }
-    img {
-      margin-top: 3vh;
-      max-width: 90%;
-      height: auto;
+    input:focus {
+      border-color: #9bbcf0;
+      box-shadow: 0 0 5px rgba(120, 150, 255, 0.4);
+    }
+    button {
+      padding: 10px 24px;
+      font-size: 1.05em;
+      font-weight: 500;
+      margin-top: 15px;
+      cursor: pointer;
+      border: 1.5px solid #c7d2fe; 
       border-radius: 12px;
+      background-color: #e0e7ff; 
+      color: #1e293b;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), /* ombre légère dessous */
+                  inset 0 1px 0 rgba(255, 255, 255, 0.5); /* effet de surimpression */
+      transition: all 0.25s ease;
     }
-    @media (max-width: 500px) {
-      input, button {
-        width: 80%;
-        margin-top: 10px;
-        margin-left: 0;
-      }
+    
+    button:hover {
+      background-color: #dbeafe; 
+      border-color: #a5b4fc;
+      transform: translateY(-2px); /* légèrement “soulevé” */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #444;
+    }
+    #indiceZone {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .indiceLink {
+      display: inline-block;
+      margin-top: 10px;
+      color: #555;
+      cursor: pointer;
+      font-style: italic;
+      text-decoration: underline dotted;
+      transition: color 0.3s;
+    }
+    .indiceLink:hover {
+      color: #000;
+    }
+    .indiceText {
+      margin-top: 15px;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      color: #444;
+      font-style: italic;
+      max-width: 400px;
+    }
+    .visible {
+      opacity: 1;
+    }
+    #compteurIndice {
+      color: #777;
+      font-size: 0.9em;
+      margin-top: 8px;
     }
   </style>
 </head>
 <body>
   <h1>Jour 21</h1>
-  
-  <!-- Conteneur du texte + formulaire -->
-  <div id="form-container">
-    <p>Entre le mot de passe de l'énigme :</p>
-    <input type="text" id="password" placeholder="Tape le mot de passe ici">
-    <button onclick="checkPassword()">Valider</button>
-  </div>
-
+  <p>Entre la réponse de l'énigme :</p>
+  <input type="text" id="password" placeholder="Ta réponse ici">
+  <br>
+  <button onclick="checkPassword()">Valider</button>
   <div id="result"></div>
 
+  <div id="indiceZone">
+    <div id="indice1" class="indiceText">Indice 1 : (à personnaliser)</div>
+    <div id="indice2" class="indiceText">Indice 2 : (à personnaliser)</div>
+    <div id="indice3" class="indiceText">Indice 3 : (à personnaliser)</div>
+
+    <div id="indiceLink" class="indiceLink" onclick="showNextIndice()">💭 Voir un indice</div>
+    <div id="compteurIndice"></div>
+  </div>
+
   <script>
+    let indiceStep = 0;
+    const totalIndices = 3;
+
     function checkPassword() {
-      const expected = "reponse21";
-      const input = document.getElementById('password').value.trim();
+      const input = document.getElementById('password').value.trim().toLowerCase();
+      const expected = "reponse21"; // à personnaliser
       const result = document.getElementById('result');
+
       if (input === expected) {
-        // supprime tout le conteneur (texte + champ + bouton)
-        document.getElementById('form-container').remove();
-        // affiche l'image
-        result.innerHTML = '<img src="image.jpg" alt="Récompense">';
+        window.location.href = "plan.html";
       } else {
-        result.innerHTML = '<p style="color:red;">Mauvaise réponse 😅</p>';
+        result.innerHTML = "Essaye encore 😅";
+        result.style.color = "#e63946";
+      }
+    }
+
+    function showNextIndice() {
+      indiceStep++;
+      const current = document.getElementById('indice' + indiceStep);
+      const compteur = document.getElementById('compteurIndice');
+      if (current) {
+        current.classList.add('visible');
+        compteur.innerHTML = `Indice ${indiceStep} / ${totalIndices}`;
+      }
+      if (indiceStep === totalIndices) {
+        document.getElementById('indiceLink').style.display = 'none';
       }
     }
   </script>
