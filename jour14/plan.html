@@ -43,26 +43,26 @@
     }
     #messagePasTrouve {
       margin-top: 20px;
-      font-style: italic;
-      color: #e63946;
+      font-style: normal;
+      color: #000;
       display: none;
     }
   </style>
 </head>
 <body>
-  <h1>Bonne réponse, félicitations !</h1>
-  <img src="image.jpg" alt="Récompense">
+  <h1>Bravo ! Tu es trop fort ❤️ !</h1>
+  <img src="plan.png" alt="Récompense">
 
   <div>
     <button class="btn" onclick="trouve()">Trouvé</button>
     <button class="btn" onclick="pasTrouve()">Pas trouvé</button>
   </div>
 
-  <div id="messagePasTrouve">Cherche mieux 😅</div>
+  <div id="messagePasTrouve">Cherche mieux ! 😘</div>
 
   <script>
     // lancer les confettis
-    confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+    confetti({ particleCount: 500, spread: 70, origin: { y: 0.6 } });
 
     function trouve() {
       window.location.href = "fin.html";
