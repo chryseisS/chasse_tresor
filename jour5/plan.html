@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan Jour 5</title>
+  <!-- Confettis via canvas -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <style>
+    body {
+      font-family: 'Comfortaa', cursive;
+      text-align: center;
+      padding: 40px;
+      background-color: #f5f7fa;
+      min-height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      color: #333;
+      font-weight: 600;
+    }
+    img {
+      margin-top: 30px;
+      max-width: 80%;
+      border-radius: 12px;
+    }
+    .btn {
+      padding: 10px 24px;
+      font-size: 1.05em;
+      font-weight: 500;
+      margin: 15px 10px 0 10px;
+      cursor: pointer;
+      border: 1.5px solid #c7d2fe;
+      border-radius: 12px;
+      background-color: #e0e7ff;
+      color: #1e293b;
+      transition: all 0.25s ease;
+    }
+    .btn:hover {
+      background-color: #dbeafe;
+      border-color: #a5b4fc;
+      transform: translateY(-1px);
+    }
+    #messagePasTrouve {
+      margin-top: 20px;
+      font-style: italic;
+      color: #e63946;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bonne réponse, félicitations !</h1>
+  <img src="image.jpg" alt="Récompense">
+
+  <div>
+    <button class="btn" onclick="trouve()">Trouvé</button>
+    <button class="btn" onclick="pasTrouve()">Pas trouvé</button>
+  </div>
+
+  <div id="messagePasTrouve">Cherche mieux 😅</div>
+
+  <script>
+    // lancer les confettis
+    confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+
+    function trouve() {
+      window.location.href = "fin.html";
+    }
+
+    function pasTrouve() {
+      document.getElementById('messagePasTrouve').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
