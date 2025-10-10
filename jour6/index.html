@@ -106,20 +106,13 @@
 </head>
 <body>
   <h1>Jour 6</h1>
-  <p>Entre la réponse de l'énigme :</p>
+  <p>Associe le numéro de la carte de droite avec la couleur de celle de gauche pour trouver la réponse (exemple : VALETCARREAU/9COEUR)</p>
   <input type="text" id="password" placeholder="Réponse">
   <br>
   <button onclick="checkPassword()">Valider</button>
   <div id="result"></div>
 
-  <div id="indiceZone">
-    <div id="indice1" class="indiceText">Indice 1 : (à personnaliser)</div>
-    <div id="indice2" class="indiceText">Indice 2 : (à personnaliser)</div>
-    <div id="indice3" class="indiceText">Indice 3 : (à personnaliser)</div>
 
-    <div id="indiceLink" class="indiceLink" onclick="showNextIndice()">💭 Voir un indice</div>
-    <div id="compteurIndice"></div>
-  </div>
 
   <script>
     let failCount = 0;
@@ -168,18 +161,7 @@
       }
     }
 
-    function showNextIndice() {
-      indiceStep++;
-      const current = document.getElementById('indice' + indiceStep);
-      const compteur = document.getElementById('compteurIndice');
-      if (current) {
-        current.classList.add('visible');
-        compteur.innerHTML = `Indice ${indiceStep} / ${totalIndices}`;
-      }
-      if (indiceStep === totalIndices) {
-        document.getElementById('indiceLink').style.display = 'none';
-      }
-    }
+
   </script>
 </body>
 </html>

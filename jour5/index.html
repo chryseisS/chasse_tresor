@@ -106,16 +106,15 @@
 </head>
 <body>
   <h1>Jour 5</h1>
-  <p>Entre la réponse de l'énigme :</p>
+  <p>Combien vaut le lion ?</p>
   <input type="text" id="password" placeholder="Réponse">
   <br>
   <button onclick="checkPassword()">Valider</button>
   <div id="result"></div>
 
   <div id="indiceZone">
-    <div id="indice1" class="indiceText">Indice 1 : (à personnaliser)</div>
-    <div id="indice2" class="indiceText">Indice 2 : (à personnaliser)</div>
-    <div id="indice3" class="indiceText">Indice 3 : (à personnaliser)</div>
+    <div id="indice1" class="indiceText">Indice 1 : Les maths ne t'aideront pas...</div>
+    <div id="indice2" class="indiceText">Indice 2 : ... mais il faut quand même savoir compter</div>
 
     <div id="indiceLink" class="indiceLink" onclick="showNextIndice()">💭 Voir un indice</div>
     <div id="compteurIndice"></div>
@@ -124,12 +123,12 @@
   <script>
     let failCount = 0;
     let indiceStep = 0;
-    const totalIndices = 3;
+    const totalIndices = 2;
     let trouve = false;
 
     function checkPassword() {
       const input = document.getElementById('password').value.trim().toLowerCase();
-      const expected = "reponse5";
+      const expected = "m";
       const result = document.getElementById('result');
 
       result.classList.remove('shake');
