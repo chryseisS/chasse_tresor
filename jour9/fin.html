@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
   <title>Fin Jour 9</title>
   <style>
     body {
@@ -37,7 +39,11 @@
 </head>
 <body>
   <div class="card">
-    <p>Pour ce début de mois de décembre, il est temps de tenter ta chance ! Ouvre, gratte et découvre ce qui t’attend.</p>
+    <p>Aujourd’hui, tu vas pouvoir devenir le capitaine d’un bateau pas comme les autres. En espérant que tu arrives à l’assembler avant que l’histoire ne touche à sa fin !</p>
   </div>
+  <script>
+confetti({ particleCount: 500, spread: 70, origin: { y: 0.6 } });
+</script>
 </body>
+
 </html>

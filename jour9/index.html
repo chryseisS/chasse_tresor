@@ -106,20 +106,11 @@
 </head>
 <body>
   <h1>Jour 9</h1>
-  <p>Entre la réponse de l'énigme :</p>
-  <input type="text" id="password" placeholder="Réponse">
+  <p>Appuie sur le bouton quand tu as trouvé les rébus</p>
   <br>
-  <button onclick="checkPassword()">Valider</button>
+  <button onclick="checkPassword()">J'ai les réponses !</button>
   <div id="result"></div>
 
-  <div id="indiceZone">
-    <div id="indice1" class="indiceText">Indice 1 : (à personnaliser)</div>
-    <div id="indice2" class="indiceText">Indice 2 : (à personnaliser)</div>
-    <div id="indice3" class="indiceText">Indice 3 : (à personnaliser)</div>
-
-    <div id="indiceLink" class="indiceLink" onclick="showNextIndice()">💭 Voir un indice</div>
-    <div id="compteurIndice"></div>
-  </div>
 
   <script>
     let failCount = 0;
@@ -128,58 +119,12 @@
     let trouve = false;
 
     function checkPassword() {
-      const input = document.getElementById('password').value.trim().toLowerCase();
-      const expected = "reponse9";
-      const result = document.getElementById('result');
 
-      result.classList.remove('shake');
-
-      if (input === expected && failCount < 3) {
         window.location.href = "plan.html";
-      }  else if (input === expected && failCount >= 3){
-          trouve = true;
-          let message = "Bravo ! Tu as fini par trouver... Mais trop tard désolée";
-          result.innerHTML = message;
-          void result.offsetWidth;
-          result.classList.add('shake');
-      }else if (trouve === true) {
-          let message = "Tu as déjà trouvé (trop tard), et le cadeau a disparu ! Continue ta journée";
-          result.innerHTML = message;
-          void result.offsetWidth;
-          result.classList.add('shake');          
-                    
-          
-          }else {
-        failCount++;
-        let message = "";
-        if (failCount === 1) {
-          message = "Faux ! Nouvel essai ?";
-        } else if (failCount === 2) {
-          message = "Ca ne s'améliore pas...";
-        } else if (failCount === 3) {
-          message = "Déjà 3 erreurs. Tu as désormais perdu le cadeau du jour. Dommage... 😘 ";
-        } else {
-          message = `Tu as déjà ${failCount} erreurs ! Tu peux continuer à jouer mais tu ne gagneras plus rien.`;
-        }
-        result.innerHTML = message;
 
-        void result.offsetWidth;
-        result.classList.add('shake');
-      }
     }
 
-    function showNextIndice() {
-      indiceStep++;
-      const current = document.getElementById('indice' + indiceStep);
-      const compteur = document.getElementById('compteurIndice');
-      if (current) {
-        current.classList.add('visible');
-        compteur.innerHTML = `Indice ${indiceStep} / ${totalIndices}`;
-      }
-      if (indiceStep === totalIndices) {
-        document.getElementById('indiceLink').style.display = 'none';
-      }
-    }
+
   </script>
 </body>
 </html>
