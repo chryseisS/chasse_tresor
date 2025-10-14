@@ -8,14 +8,23 @@
     body {
       font-family: 'Poppins', Arial, sans-serif;
       background-color: #f7fbff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
       margin: 0;
-      padding: 20px;
+      padding: 40px 20px 20px; /* Ajoute de l'espace en haut */
       box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Centrage horizontal uniquement */
+      min-height: 100vh;
     }
+
+    .top-message {
+      max-width: 720px;
+      text-align: center;
+      margin-bottom: 40px;
+      color: #374151;
+      font-size: 1.1rem;
+    }
+
     .card {
       max-width: 720px;
       background: #ffffff;
@@ -24,10 +33,12 @@
       box-shadow: 0 8px 24px rgba(33, 53, 71, 0.08);
       text-align: center;
     }
+
     h1 {
       margin-bottom: 12px;
       color: #213547;
     }
+
     p {
       color: #6b7280;
       font-size: 1.05rem;
@@ -36,8 +47,14 @@
   </style>
 </head>
 <body>
-  <div class="card">
-    <p>Pour ce début de mois de décembre, il est temps de tenter ta chance ! Ouvre, gratte et découvre ce qui t’attend.</p>
+
+  <div class="top-message">
+    <p>Comme tu ne reviens plus à la maison, voici un petit message pour te faire patienter et comprendre ce que tu as gagné ! As-tu trouvé ?</p>
   </div>
+
+  <div class="card">
+    <p>Il serait quand même dommage que ce soit le seul auquel tu n’aies jamais joué. Cela me permettra de découvrir la franchise et de nous rappeler de bons souvenirs.</p>
+  </div>
+
 </body>
 </html>
