@@ -102,71 +102,43 @@
       font-size: 0.9em;
       margin-top: 8px;
     }
+	    #messagePasTrouve {
+      margin-top: 20px;
+      font-style: normal;
+      color: #000;
+      display: none;
+    }
   </style>
 </head>
 <body>
   <h1>Jour 8</h1>
-  <p>Entre la réponse de l'énigme :</p>
-  <input type="text" id="password" placeholder="Réponse">
-  <br>
-  <button onclick="checkPassword()">Valider</button>
-  <div id="result"></div>
+  <p>
+ Zba svyf, </p>
+
+<p>Ninag qr cnegve, wr g’nv ynvffr har fhecevfr. Ovra pnpurr cbhe dhr gbv frhy chvffr yn ergebhire. Zbagr ra unhg, purepur ovra, nh sbaq qrf nezbverf, dhrydhr pubfr nggraq.</p>
+
+<p>Gebhir-yn ivgr !
+</p>
 
   <div id="indiceZone">
-    <div id="indice1" class="indiceText">Indice 1 : (à personnaliser)</div>
-    <div id="indice2" class="indiceText">Indice 2 : (à personnaliser)</div>
-    <div id="indice3" class="indiceText">Indice 3 : (à personnaliser)</div>
+    <div id="indice1" class="indiceText">Indice 1 : Cela a l'air d'être une lettre de quelqu'un à son fils</div>
+    <div id="indice2" class="indiceText">Indice 2 : Pense à César. Il a dû donner son nom à quelque chose ?</div>
 
     <div id="indiceLink" class="indiceLink" onclick="showNextIndice()">💭 Voir un indice</div>
     <div id="compteurIndice"></div>
   </div>
+  <div>
+    <button class="btn" onclick="trouve()">Trouvé</button>
+    <button class="btn" onclick="pasTrouve()">Pas trouvé</button>
+  </div>
 
-  <script>
+  <div id="messagePasTrouve">Cherche mieux !</div>
+
+ <script>
     let failCount = 0;
     let indiceStep = 0;
-    const totalIndices = 3;
-    let trouve = false;
+    const totalIndices = 2;
 
-    function checkPassword() {
-      const input = document.getElementById('password').value.trim().toLowerCase();
-      const expected = "reponse8";
-      const result = document.getElementById('result');
-
-      result.classList.remove('shake');
-
-      if (input === expected && failCount < 3) {
-        window.location.href = "plan.html";
-      }  else if (input === expected && failCount >= 3){
-          trouve = true;
-          let message = "Bravo ! Tu as fini par trouver... Mais trop tard désolée";
-          result.innerHTML = message;
-          void result.offsetWidth;
-          result.classList.add('shake');
-      }else if (trouve === true) {
-          let message = "Tu as déjà trouvé (trop tard), et le cadeau a disparu ! Continue ta journée";
-          result.innerHTML = message;
-          void result.offsetWidth;
-          result.classList.add('shake');          
-                    
-          
-          }else {
-        failCount++;
-        let message = "";
-        if (failCount === 1) {
-          message = "Faux ! Nouvel essai ?";
-        } else if (failCount === 2) {
-          message = "Ca ne s'améliore pas...";
-        } else if (failCount === 3) {
-          message = "Déjà 3 erreurs. Tu as désormais perdu le cadeau du jour. Dommage... 😘 ";
-        } else {
-          message = `Tu as déjà ${failCount} erreurs ! Tu peux continuer à jouer mais tu ne gagneras plus rien.`;
-        }
-        result.innerHTML = message;
-
-        void result.offsetWidth;
-        result.classList.add('shake');
-      }
-    }
 
     function showNextIndice() {
       indiceStep++;
@@ -179,6 +151,14 @@
       if (indiceStep === totalIndices) {
         document.getElementById('indiceLink').style.display = 'none';
       }
+    }
+
+    function trouve() {
+      window.location.href = "fin.html";
+    }
+
+    function pasTrouve() {
+      document.getElementById('messagePasTrouve').style.display = 'block';
     }
   </script>
 </body>
