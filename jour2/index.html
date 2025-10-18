@@ -114,8 +114,8 @@
 
   <div id="indiceZone">
     <div id="indice1" class="indiceText">Indice 1 : moi je les trouve mignons</div>
-	<div id="indice2" class="indiceText">Indice 2 : il y en a quand même beaucoup dans les grandes villes</div>
-	<div id="indice3" class="indiceText">Indice 3 : les enfants les embêtent souvent</div>
+	<div id="indice2" class="indiceText">Indice 2 : c'est une insulte pour les chasseurs de palombe</div>
+	<div id="indice3" class="indiceText">Indice 3 : tu les imites très bien</div>
     <div id="indiceLink" class="indiceLink" onclick="showNextIndice()">💭 Voir un indice</div>
     <div id="compteurIndice"></div>
   </div>
@@ -128,12 +128,12 @@
 
     function checkPassword() {
       const input = document.getElementById('password').value.trim().toLowerCase();
-      const expected = "itekso";
+      const expected = "iteksox";
       const result = document.getElementById('result');
 
       result.classList.remove('shake');
 
-      if (input === expected && failCount < 3) {
+      if ((input === expected || input === "itekso") && failCount < 3) {
         window.location.href = "plan.html";
       }  else if (input === expected && failCount >= 3){
           trouve = true;
