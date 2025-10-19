@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jour 23</title>
+  <title>Jour 24</title>
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -105,33 +105,53 @@
   </style>
 </head>
 <body>
-  <h1>Jour 23</h1>
-  <p>Avant toute chose, il va te falloir trouver la <span style="font-weight: bold; font-family: Arial, sans-serif;">clé</span>.</p> <p> <span style="font-weight: bold; font-family: Arial, sans-serif;">Love</span> you</p>
-	<br>
-  <p>Entre la réponse de l'énigme :</p>
+  <h1>Jour 24</h1>
+  <p id ="instruction">Code juste le dernier mot de l'expression pour gagner du temps</p>
   <input type="text" id="password" placeholder="Réponse">
   <br>
   <button onclick="checkPassword()">Valider</button>
   <div id="result"></div>
 
+  <div id="indiceZone">
+    <div id="indice1" class="indiceText">Indice 1 : c'est un dingbat</div>
+    <div id="indice2" class="indiceText">Indice 2 : il y a ...</div>
+    <div id="indice3" class="indiceText">Indice 3 : le centre du QR code te mettra sur la voie</div>
+    <div id="indice4" class="indiceText">Indice 4 : j'ai soif. Il y a de l'eau quelque part ?</div>
+	<div id="indice5" class="indiceText">Indice 5 : Oulalalalala, ça va chauffer pour toi !</div>
 
+    <div id="indiceLink" class="indiceLink" onclick="showNextIndice()">💭 Voir un indice</div>
+    <div id="compteurIndice"></div>
+  </div>
 
   <script>
     let failCount = 0;
     let indiceStep = 0;
-    const totalIndices = 3;
+    const totalIndices = 5;
     let trouve = false;
 
     function checkPassword() {
       const input = document.getElementById('password').value.trim().toLowerCase();
-      const expected = "we";
+      const expected = "jxzcxrl!";
       const result = document.getElementById('result');
 
       result.classList.remove('shake');
 
       if (input === expected && failCount < 3) {
         window.location.href = "fin.html";
-      }  else if (input === expected && failCount >= 3){
+      }  else if (input === "jxz") {
+	      let message = "Ah mince, j'avais oublié de te dire de rajouter le nombre de mots de l'expression (pour être sûre que tu as bien la bonne expression, tu comprends...";
+          result.innerHTML = message;
+          void result.offsetWidth;
+          result.classList.add('shake');
+		  document.getElementById("instruction").textContent = "Code juste le mot de l'expression en rajoutant le nombre de mots (crypté tout ça bien sûr !)";
+	  }	  else if (input === "jxzv") {
+	      let message = "Flûte, encore oublié de te dire qu'il faut multiplier le nombre par 358 et rajouter une factorielle";
+          result.innerHTML = message;
+          void result.offsetWidth;
+          result.classList.add('shake');
+		  document.getElementById("instruction").textContent = "Code juste le mot de l'expression en rajoutant le nombre de mots multiplié par 358 avec une factorielle (crypté tout ça bien sûr !). Promis c'est le dernier. Mais le cadeau vaut le coup !";
+	  }	
+	  else if (input === expected && failCount >= 3){
           trouve = true;
           let message = "Bravo ! Tu as fini par trouver... Mais trop tard désolée";
           result.innerHTML = message;
@@ -163,7 +183,18 @@
       }
     }
 
-
+    function showNextIndice() {
+      indiceStep++;
+      const current = document.getElementById('indice' + indiceStep);
+      const compteur = document.getElementById('compteurIndice');
+      if (current) {
+        current.classList.add('visible');
+        compteur.innerHTML = `Indice ${indiceStep} / ${totalIndices}`;
+      }
+      if (indiceStep === totalIndices) {
+        document.getElementById('indiceLink').style.display = 'none';
+      }
+    }
   </script>
 </body>
 </html>

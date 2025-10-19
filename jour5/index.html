@@ -133,7 +133,7 @@
 
       result.classList.remove('shake');
 
-      if (input === expected && failCount < 3) {
+      if ((input === expected || input === "e") && failCount < 3) {
         window.location.href = "plan.html";
       }  else if (input === expected && failCount >= 3){
           trouve = true;

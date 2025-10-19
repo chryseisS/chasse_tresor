@@ -106,12 +106,19 @@
 </head>
 <body>
   <h1>Jour 13</h1>
-  <p>Quelle est la forme finale du jardin ?</p>
+  <p>Relie les salades entre elles, à quelle forme cela te fait-il penser ?</p>
   <input type="text" id="password" placeholder="Réponse">
   <br>
   <button onclick="checkPassword()">Valider</button>
   <div id="result"></div>
+  <div id="indiceZone">
+    <div id="indice1" class="indiceText">Indice 1 : Deux droites sécantes = 1 salade</div>
+    <div id="indice2" class="indiceText">Indice 2 : Quatre droites sécantes = 5 salades </div>
+    <div id="indice3" class="indiceText">Indice 3 : U D T Q C S S H</div>
 
+    <div id="indiceLink" class="indiceLink" onclick="showNextIndice()">💭 Voir un indice</div>
+    <div id="compteurIndice"></div>
+  </div>
 
   <script>
     let failCount = 0;
