@@ -74,33 +74,54 @@
       animation: shake 0.3s;
       color: #e63946;
     }
+
+    /* Zone des indices */
     #indiceZone {
       margin-top: 40px;
-      text-align: center;
+      text-align: left;
+      width: 90%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
+
+.indiceText {
+  display: none; /* caché complètement au départ */
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  color: #444;
+  font-style: italic;
+  line-height: 1.5;
+  background: #eef2ff;
+  padding: 12px 16px;
+  border-radius: 10px;
+  width: 100%;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  margin-top: 15px;
+}
+
+.visible {
+  display: block;
+  opacity: 1;
+}
+
     .indiceLink {
-      display: inline-block;
-      margin-top: 10px;
-      color: #555;
+      margin-top: 15px;
+      color: #333;
       cursor: pointer;
       font-style: italic;
       text-decoration: underline dotted;
       transition: color 0.3s;
+      align-self: center;
     }
     .indiceLink:hover { color: #000; }
-    .indiceText {
-      margin-top: 15px;
-      opacity: 0;
-      transition: opacity 0.8s ease;
-      color: #444;
-      font-style: italic;
-      max-width: 400px;
-    }
-    .visible { opacity: 1; }
+
     #compteurIndice {
       color: #777;
       font-size: 0.9em;
       margin-top: 8px;
+      align-self: center;
     }
   </style>
 </head>
@@ -118,6 +139,7 @@
     <div id="indice3" class="indiceText">Indice 3 : Toujours pas ? La première phrase de Jon te permet d'éliminer 2 mois.</div>
     <div id="indice4" class="indiceText">Indice 4 : La phrase de Luc te permet de supprimer 2 dates.</div>
 	<div id="indice5" class="indiceText">Indice 5 : Avec la dernière phrase, tu peux ensuite choisir entre les 3 dates restantes de manière assez évidente ! </div>
+
     <div id="indiceLink" class="indiceLink" onclick="showNextIndice()">💭 Voir un indice</div>
     <div id="compteurIndice"></div>
   </div>
@@ -139,18 +161,14 @@
         window.location.href = "fin.html";
       }  else if (input === expected && failCount >= 3){
           trouve = true;
-          let message = "Bravo ! Tu as fini par trouver... Mais trop tard désolée";
-          result.innerHTML = message;
+          result.innerHTML = "Bravo ! Tu as fini par trouver... Mais trop tard désolée";
           void result.offsetWidth;
           result.classList.add('shake');
-      }else if (trouve === true) {
-          let message = "Tu as déjà trouvé (trop tard), et le cadeau a disparu ! Continue ta journée";
-          result.innerHTML = message;
+      } else if (trouve === true) {
+          result.innerHTML = "Tu as déjà trouvé (trop tard), et le cadeau a disparu ! Continue ta journée";
           void result.offsetWidth;
           result.classList.add('shake');          
-                    
-          
-          }else {
+      } else {
         failCount++;
         let message = "";
         if (failCount === 1) {
@@ -163,24 +181,25 @@
           message = `Tu as déjà ${failCount} erreurs ! Tu peux continuer à jouer mais tu ne gagneras plus rien.`;
         }
         result.innerHTML = message;
-
         void result.offsetWidth;
         result.classList.add('shake');
       }
     }
 
-    function showNextIndice() {
-      indiceStep++;
-      const current = document.getElementById('indice' + indiceStep);
-      const compteur = document.getElementById('compteurIndice');
-      if (current) {
-        current.classList.add('visible');
-        compteur.innerHTML = `Indice ${indiceStep} / ${totalIndices}`;
-      }
-      if (indiceStep === totalIndices) {
-        document.getElementById('indiceLink').style.display = 'none';
-      }
-    }
+function showNextIndice() {
+  indiceStep++;
+  const current = document.getElementById('indice' + indiceStep);
+  const compteur = document.getElementById('compteurIndice');
+  
+  if (current) {
+    current.classList.add('visible'); // devient display:block et opacity:1
+    compteur.innerHTML = `Indice ${indiceStep} / ${totalIndices}`;
+  }
+
+  if (indiceStep === totalIndices) {
+    document.getElementById('indiceLink').style.display = 'none';
+  }
+}
   </script>
 </body>
 </html>
