@@ -131,20 +131,20 @@
 
     function checkPassword() {
       const input = document.getElementById('password').value.trim().toLowerCase();
-      const expected = "jxzcxrl!";
+      const expected = "twqgwud!";
       const result = document.getElementById('result');
 
       result.classList.remove('shake');
 
       if (input === expected && failCount < 3) {
         window.location.href = "fin.html";
-      }  else if (input === "jxz") {
+      }  else if (input === "twq") {
 	      let message = "Ah mince, j'avais oublié de te dire de rajouter le nombre de mots de l'expression (pour être sûre que tu as bien la bonne expression, tu comprends...";
           result.innerHTML = message;
           void result.offsetWidth;
           result.classList.add('shake');
 		  document.getElementById("instruction").textContent = "Code juste le mot de l'expression en rajoutant le nombre de mots (crypté tout ça bien sûr !)";
-	  }	  else if (input === "jxzv") {
+	  }	  else if (input === "twqm") {
 	      let message = "Flûte, encore oublié de te dire qu'il faut multiplier le nombre par 358 et rajouter une factorielle";
           result.innerHTML = message;
           void result.offsetWidth;
