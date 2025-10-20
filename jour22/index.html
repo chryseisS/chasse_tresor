@@ -113,8 +113,11 @@
   <div id="result"></div>
 
   <div id="indiceZone">
-    <div id="indice1" class="indiceText">Indice 1 : Tout est logique !</div>
-
+    <div id="indice1" class="indiceText">Indice 1 : C'est juste une question de logique. Au début, je n'avais pas prévu de mettre d'indices mais en voyant ma mère galérer, je me suis dit que c'était mieux.</div>
+    <div id="indice2" class="indiceText">Indice 2 : Bon, si la logique est difficile, essaie de prendre chaque date et de te demander si la discussion entre les deux est vraie. Exemple : si Pam est né le 19 mai, la première phrase de Jon est fausse.</div>
+    <div id="indice3" class="indiceText">Indice 3 : Toujours pas ? La première phrase de Jon te permet d'éliminer 2 mois.</div>
+    <div id="indice4" class="indiceText">Indice 4 : La phrase de Luc te permet de supprimer 2 dates.</div>
+	<div id="indice5" class="indiceText">Indice 5 : Avec la dernière phrase, tu peux ensuite choisir entre les 3 dates restantes de manière assez évidente ! </div>
     <div id="indiceLink" class="indiceLink" onclick="showNextIndice()">💭 Voir un indice</div>
     <div id="compteurIndice"></div>
   </div>
@@ -122,7 +125,7 @@
   <script>
     let failCount = 0;
     let indiceStep = 0;
-    const totalIndices = 1;
+    const totalIndices = 5;
     let trouve = false;
 
     function checkPassword() {

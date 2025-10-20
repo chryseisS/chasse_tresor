@@ -112,9 +112,8 @@
   <button onclick="checkPassword()">Valider</button>
   <div id="result"></div>
   <div id="indiceZone">
-    <div id="indice1" class="indiceText">Indice 1 : Deux droites sécantes = 1 salade</div>
-    <div id="indice2" class="indiceText">Indice 2 : Quatre droites sécantes = 5 salades </div>
-    <div id="indice3" class="indiceText">Indice 3 : U D T Q C S S H</div>
+    <div id="indice1" class="indiceText">Indice 1 : Un minimum de droite pour un maximum d’intersections</div>
+
 
     <div id="indiceLink" class="indiceLink" onclick="showNextIndice()">💭 Voir un indice</div>
     <div id="compteurIndice"></div>
@@ -123,7 +122,7 @@
   <script>
     let failCount = 0;
     let indiceStep = 0;
-    const totalIndices = 3;
+    const totalIndices = 1;
     let trouve = false;
 
     function checkPassword() {
