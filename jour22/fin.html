@@ -44,6 +44,30 @@
       font-size: 1.05rem;
       line-height: 1.5;
     }
+
+    #indiceZone {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .indiceImg {
+      display: none; /* Caché au départ */
+      margin-top: 20px;
+      width: 80%; /* Ajuste la taille de l'image */
+      max-width: 500px;
+    }
+
+    .indiceImg.visible {
+      display: block; /* Affiché lorsque la classe 'visible' est ajoutée */
+    }
+
+    .indiceLink {
+      color: black; /* Changer la couleur du texte en noir */
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
   </style>
 </head>
 <body>
@@ -55,6 +79,32 @@
   <div class="card">
     <p>Tu connais cet univers, mais pas encore ce chapitre. Pour moi, c’est une première, mais l’endroit nous semblera familier.</p>
   </div>
+
+  <div id="indiceZone">
+    <img id="indice1" class="indiceImg" src="image1.png" alt="Indice 1">
+    <img id="indice2" class="indiceImg" src="japon.jpg" alt="Indice 2">
+    
+    <div id="indiceLink" class="indiceLink" onclick="showNextIndice()">💭 Voir un indice</div>
+    <div id="compteurIndice"></div>
+  </div>
+
+  <script>
+    let indiceStep = 0;
+    const totalIndices = 2;
+
+    function showNextIndice() {
+      indiceStep++;
+      const current = document.getElementById('indice' + indiceStep);
+      const compteur = document.getElementById('compteurIndice');
+      if (current) {
+        current.classList.add('visible'); // Ajoute la classe visible
+      }
+      if (indiceStep === totalIndices) {
+        document.getElementById('indiceLink').style.display = 'none'; // Cache le lien après avoir montré tous les indices
+      }
+      compteur.innerHTML = `Indice ${indiceStep} / ${totalIndices}`;
+    }
+  </script>
 
 </body>
 </html>
